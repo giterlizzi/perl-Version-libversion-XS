@@ -21,7 +21,7 @@ WriteMakefile(
     LIBS               => ['-lversion'],
     INC                => '-I.',
     MIN_PERL_VERSION   => 5.010,
-    CONFIGURE_REQUIRES => {'ExtUtils::MakeMaker' => '0', 'DynaLoader' => '0'},
+    CONFIGURE_REQUIRES => {'ExtUtils::MakeMaker' => '0'},
     TEST_REQUIRES      => {'Test::More'          => '0'},
     PREREQ_PM          => {},
     META_MERGE         => {
