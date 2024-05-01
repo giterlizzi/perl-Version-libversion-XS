@@ -41,8 +41,8 @@ say '1.0p1 < 1.0post1'  if(version_compare2('1.0p1', '1.0post1') == -1);
 say '1.0p1 < 1.0patch1' if(version_compare2('1.0p1', '1.0patch1') == -1);
 
 # ... but this is tunable: here it's handled as 'patch'
-say '1.0p1 > 1.0pre1' if(version_compare4('1.0p1', '1.0pre1', VERSIONFLAG_P_IS_PATCH, 0) == 1);
-say '1.0p1 == 1.0post1' if(version_compare4('1.0p1', '1.0post1', VERSIONFLAG_P_IS_PATCH, 0) == 0);
+say '1.0p1 > 1.0pre1'    if(version_compare4('1.0p1', '1.0pre1', VERSIONFLAG_P_IS_PATCH, 0) == 1);
+say '1.0p1 == 1.0post1'  if(version_compare4('1.0p1', '1.0post1', VERSIONFLAG_P_IS_PATCH, 0) == 0);
 say '1.0p1 == 1.0patch1' if(version_compare4('1.0p1', '1.0patch1', VERSIONFLAG_P_IS_PATCH, 0) == 0);
 
 # a way to check that the version belongs to a given release
