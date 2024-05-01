@@ -33,9 +33,8 @@ for (my $i0 = 0; $i0 < scalar @version_chars; $i0++) {
                         my $res  = version_compare2($v1, $v2);
                         my $test = sprintf("%s %s %s", $v1, (($res == 0) ? '=' : ($res < 0) ? '<' : '>'), $v2);
 
-                        is($res, $res, $test);
+                        ok(($res == -1 || $res == 0 || $res == 1), $test);
 
-                        #diag ;
                     }
 
                 }
