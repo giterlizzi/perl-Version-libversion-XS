@@ -4,7 +4,6 @@
 #include "XSUB.h"
 
 #include <libversion/version.h>
-#include <libversion/version.h>
 
 MODULE = Version::libversion::XS    PACKAGE = Version::libversion::XS   PREFIX = lib_
 
