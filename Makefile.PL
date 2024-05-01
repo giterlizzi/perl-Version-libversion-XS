@@ -6,13 +6,17 @@ use ExtUtils::MakeMaker;
 
 require DynaLoader;
 
-unless (DynaLoader::dl_findfile('-lversion')) {
+eval "use Alien::Base::Wrapper qw(Alien::libversion !export)";
+my $have_alien = $@ ? 0 : 1;
+
+if (!DynaLoader::dl_findfile('-lversion') && !$have_alien) {
     print STDERR qq{ERROR: 'libversion' must be installed to compile 'Version::libversion::XS'!\n};
     print STDERR qq{       See https://github.com/repology/libversion#building for installation instructions\n};
-    exit 0;
+    print STDERR qq{       or install "Alien::libversion" module.\n};
+    exit 1;
 }
 
-WriteMakefile(
+my %args = (
     NAME               => 'Version::libversion::XS',
     AUTHOR             => q{Giuseppe Di Terlizzi <gdt@cpan.org>},
     VERSION_FROM       => 'lib/Version/libversion/XS.pm',
@@ -39,3 +43,10 @@ WriteMakefile(
     dist  => {COMPRESS => 'gzip -9f', SUFFIX => 'gz',},
     clean => {FILES    => 'Version-libversion-XS-*'},
 );
+
+
+if ($have_alien) {
+    %args = (%args, Alien::Base::Wrapper->mm_args);
+}
+
+WriteMakefile(%args);
